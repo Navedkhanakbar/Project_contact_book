@@ -11,7 +11,7 @@ public class ConatctDAO  {
 
     // adding contact to database
     public Contact create(Contact c) throws SQLException {
-        String sql = "insert into contact (name,phone,email,address) values (?,?,?,?)";
+        String sql = "insert into contacts (name,phone,email,address) values (?,?,?,?)";
 
         try(Connection conn = DataBase.getconnection()) {
             PreparedStatement prstmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -29,7 +29,7 @@ public class ConatctDAO  {
     // updating the database contact
     public boolean update(Contact c) throws SQLException {
         if(c.getId() == null) throw new IllegalArgumentException("id required for update");
-        String query = "update contacts name = ?, phone = ?, email = ?, address = ? where id = ?";
+        String query = "update contacts set name = ?, phone = ?, email = ?, address = ? where id = ?";
         try(Connection conn = DataBase.getconnection()) {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1,c.getName());
@@ -53,7 +53,7 @@ public class ConatctDAO  {
 
     // finding by contact
     public Contact FindbyId(long id) throws SQLException {
-        String query = "select name, phone, email, address from contacts where id = ?";
+        String query = "select id, name, phone, email, address from contacts where id = ?";
         try(Connection conn = DataBase.getconnection()) {
             PreparedStatement prestmt = conn.prepareStatement(query);
             prestmt.setLong(1,id);
@@ -78,7 +78,9 @@ public class ConatctDAO  {
     public List<Contact> serchbynameorphone(String query) throws SQLException {
         String like = "%" + query.trim() + "%";
         String sqlquery = """
-                select name, phone, email, address from contacts where name like ? or phone like ? order by name asc, id asc
+                select id, name, phone, email, address 
+                from contacts where name like ? or phone like ?
+                order by name asc, id asc
                 """;
 
         try(Connection conn = DataBase.getconnection())
@@ -105,4 +107,5 @@ public class ConatctDAO  {
                 rs.getString("address")
                 );
     }
+
 }

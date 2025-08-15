@@ -36,8 +36,8 @@ public class ContactService {
     }
 
     public void validate(String name,String phone,String email) {
-        if (name == null || !name.isBlank()) throw new IllegalArgumentException("Name is required");
-        if (phone == null || !phone.isBlank()) throw new IllegalArgumentException("phone is required");
+        if (name == null || name.isBlank()) throw new IllegalArgumentException("Name is required");
+        if (phone == null || phone.isBlank()) throw new IllegalArgumentException("phone is required");
         if (email != null && !email.isBlank() && !email.contains("@")) throw new IllegalArgumentException("invalid email");
     }
 }
