@@ -65,6 +65,6 @@ public class Contact {
 
     @Override
     public String toString() {
-        return "contact{id='%s', name='%s', phone='%s', email='%s', address='%s'}" .formatted(id,name,phone,email,address);
+        return "contact {id='%s', name='%s', phone='%s', email='%s', address='%s'}" .formatted(id,name,phone,email,address);
     }
 }

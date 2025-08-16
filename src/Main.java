@@ -30,7 +30,7 @@ public class Main {
                     case "5" ->Search();
                     case "6" -> searchbyid();
                     case "0" -> {
-                        System.out.println("byy");
+                        System.out.println("Exiting....");
                         return;
                     }
                     default -> System.out.println("Invalid option");
@@ -47,7 +47,7 @@ public class Main {
 
 
     private static void printmenu() {
-        System.out.println("""
+        System.out.print("""
                 1. Add contact
                 2. List all
                 3. Update
@@ -80,6 +80,7 @@ public class Main {
         conlist.forEach(c -> System.out.printf("%-4s %-20s %-15s %-25s %s%n",
                 c.getId(),c.getName(),c.getPhone(),c.getEmail(),c.getAddress())
         );
+        System.out.println();
 
     }
 

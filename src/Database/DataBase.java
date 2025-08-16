@@ -60,9 +60,6 @@ public class DataBase {
                         System.out.println("Index created");
                     }
                 }
-                else {
-                    System.out.println("Index already exists");
-                }
             }
 
         }
